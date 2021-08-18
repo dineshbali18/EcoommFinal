@@ -1,8 +1,7 @@
 var mongoose = require("mongoose");
 const crypto = require("crypto");
 const uuidv1 = require("uuid/v1");
-//we can also use Schema in place of mongoose
-//.Schema var Schema=mongoose.Schema
+
 var userSchema = new mongoose.Schema(
   {
     name: {
@@ -38,10 +37,6 @@ var userSchema = new mongoose.Schema(
     purchases: {
       type: Array,
       default: []
-    },
-    phoneNumber:{
-      type:String,
-      required:true
     }
   },
   { timestamps: true }

@@ -6,6 +6,10 @@ const ProductCartSchema = new mongoose.Schema({
     type: ObjectId,
     ref: "Product"
   },
+  user:{
+    type:ObjectId,
+    ref:"User"
+  },
   name: String,
   count: Number,
   price: Number

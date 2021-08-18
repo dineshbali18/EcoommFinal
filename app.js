@@ -13,7 +13,9 @@ const userRoutes = require("./routes/user");
 const categoryRoutes = require("./routes/category");
 const productRoutes = require("./routes/product");
 const orderRoutes = require("./routes/order");
-const paymentBRoutes=require("./routes/paymentBRoutes");
+const cartRoutes=require("./routes/cart");
+const paymentBRoutes = require("./routes/paymentBRoutes");
+
 //DB Connection
 mongoose
   .connect(process.env.DATABASE, {
@@ -36,10 +38,11 @@ app.use("/api", userRoutes);
 app.use("/api", categoryRoutes);
 app.use("/api", productRoutes);
 app.use("/api", orderRoutes);
-app.use("/api",paymentBRoutes)
+app.use("/api",cartRoutes);
+app.use("/api", paymentBRoutes);
 
 //PORT
-const port = process.env.PORT || 7000;
+const port = process.env.PORT || 8000;
 
 //Starting a server
 app.listen(port, () => {

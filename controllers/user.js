@@ -1,5 +1,5 @@
 const User = require("../models/user");
-const Order = require("../models/order");
+const {Order} = require("../models/order");
 
 exports.getUserById = (req, res, next, id) => {
   User.findById(id).exec((err, user) => {
@@ -9,7 +9,6 @@ exports.getUserById = (req, res, next, id) => {
       });
     }
     req.profile = user;
-    // console.log(req.profile);
     next();
   });
 };
@@ -20,20 +19,7 @@ exports.getUser = (req, res) => {
   return res.json(req.profile);
 };
 
-exports.getAllUsers = (req,res) =>{
-  User.find().exec((err,user)=>{
-    if(err || !user){
-      return res.status(400).json({
-      error:"No user was found in DB..."
-    })
-    }
-    return res.json(user);
-  })
-}
-
 exports.updateUser = (req, res) => {
-  // console.log(req.user);
-  // console.log(req.profile);
   User.findByIdAndUpdate(
     { _id: req.profile._id },
     { $set: req.body },
@@ -52,6 +38,7 @@ exports.updateUser = (req, res) => {
 };
 
 exports.userPurchaseList = (req, res) => {
+  // console.log(req.profile);
   Order.find({ user: req.profile._id })
     .populate("user", "_id name")
     .exec((err, order) => {

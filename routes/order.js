@@ -22,8 +22,8 @@ router.post(
   "/order/create/:userId",
   isSignedIn,
   isAuthenticated,
-  pushOrderInPurchaseList,
-  updateStock,
+  // pushOrderInPurchaseList,
+  // updateStock,
   createOrder
 );
 //read

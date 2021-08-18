@@ -30,7 +30,6 @@ router.post(
 //read
 router.get("/category/:categoryId", getCategory);
 router.get("/categories", getAllCategory);
-//test params
 
 //update
 router.put(

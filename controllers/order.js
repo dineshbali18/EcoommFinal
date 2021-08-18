@@ -15,7 +15,8 @@ exports.getOrderById = (req, res, next, id) => {
 };
 
 exports.createOrder = (req, res) => {
-  req.body.order.user = req.profile;
+  console.log(req.body.order);
+  req.body.order.user = req.profile._id;
   const order = new Order(req.body.order);
   order.save((err, order) => {
     if (err) {
@@ -45,8 +46,8 @@ exports.getOrderStatus = (req, res) => {
 };
 
 exports.updateStatus = (req, res) => {
-  Order.update(
-    { _id: req.body.orderId },
+  Order.updateOne(
+    { _id: req.order },
     { $set: { status: req.body.status } },
     (err, order) => {
       if (err) {
